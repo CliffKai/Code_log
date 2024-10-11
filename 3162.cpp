@@ -5,28 +5,39 @@ using namespace std;
 
 int main()
 {
-
+    vector<int> nums1 = {1,2,3,4,5,6};
+    vector<int> nums2 = {1,2,3,4,5,6};
+    int k = 2;
+    cout << numberOfPairs(nums1,nums2,k) << endl;
+    return 0;
 }
 
-int numberOfPairs(vector<int>& nums1, vector<int>& nums2, int k)
-{
-    unordered_map<int, int> count, count2;
-    int max1 = 0;
-    for (int num : nums1) {
-        count[num]++;
-        max1 = max(max1, num);
+long long numberOfPairs(vector<int>& nums1, vector<int>& nums2, int k) {
+    unordered_map<int,int> hash;
+    for(int num : nums2)
+    {
+        hash[num] ++ ;
     }
-    for (int num : nums2) {
-        count2[num]++;
-    }
-    long long res = 0;
-    for (const auto& pair : count2) {
-        int a = pair.first, cnt = pair.second;
-        for (int b = a * k; b <= max1; b += a * k) {
-            if (count.count(b) > 0) {
-                res += 1L * count[b] * cnt;
+    long long ans = 0;
+    for(int num : nums1)
+    {
+        if(num % k != 0)
+        {
+            continue;
+        }
+        int med = num / k;
+        for(int i = 1;i * i <= med; ++ i)
+        {
+            if(med % i != 0)
+            {
+                continue;
+            }
+            ans += hash[i];
+            if(i * i != med)
+            {
+                ans += hash[med / i];
             }
         }
     }
-    return res;
+    return  ans;
 }
