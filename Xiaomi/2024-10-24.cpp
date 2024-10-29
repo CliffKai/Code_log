@@ -55,23 +55,27 @@ bool check(string str)
 }
 
 vector<string> restoreIpAddresses(string s) {
+    if(s.size() < 4)
+    {
+        return {};
+    }
     string med1,med2,med3,med4;
     vector<string> ans;
-    for(int i1 = 1;i1 < s.size() - 4;++ i1)
+    for(int i1 = 0;i1 <= s.size() - 2;++ i1)
     {
         med1 = s.substr(0,i1 - 0);
         if(check(med1) == false)
         {
             continue;
         }
-        for(int i2 = i1 + 1;i2 < s.size() - 3;++ i2)
+        for(int i2 = i1 + 1;i2 < s.size() - 1;++ i2)
         {
             med2 = s.substr(i1,i2 - i1);
             if(check(med2) == false)
             {
                 continue;
             }
-            for(int i3 = i2 + 1;i3 < s.size() - 2;++ i3)
+            for(int i3 = i2 + 1;i3 < s.size();++ i3)
             {
                 med3 = s.substr(i2,i3 - i2);
                 if(check(med3) == false)
@@ -91,7 +95,7 @@ vector<string> restoreIpAddresses(string s) {
 
 int main()
 {
-    string s = "25525511135";
+    string s = "0000";
     vector<string> ans = restoreIpAddresses(s);
     for(auto & i : ans)
     {
