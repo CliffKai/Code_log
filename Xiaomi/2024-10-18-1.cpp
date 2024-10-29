@@ -10,3 +10,29 @@
 解释: 结果不能为 2, 因为 [-2,-1] 不是子数组。
 OJ:https://leetcode.cn/problems/maximum-product-subarray/description/
 */
+
+
+#include<iostream>
+#include<vector>
+
+using namespace std;
+
+int maxProduct(vector<int>& nums) {
+    long maxi = nums[0],mini = nums[0],ans = nums[0];
+    for(int i = 1;i < nums.size();++ i)
+    {
+        long mx = maxi,mn = mini;
+        maxi = max(mx * nums[i],max((long)nums[i],mn * nums[i]));
+        mini = min(mn * nums[i],min((long)nums[i],mx * nums[i]));
+
+        ans = max(maxi,ans);
+    }
+    return ans;
+}
+
+int main()
+{
+    vector<int> nums = {2,3,-2,4};
+    cout << maxProduct(nums) << endl;
+    return 0;
+}
