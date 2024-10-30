@@ -14,5 +14,9 @@ Code log
 **Interview_questions:** 
 * 很多大厂的面试题，一般能找到原题的会有对应的标注 
 
+**List:**
+* 一些大佬的题目清单，目前已有的： 
+* * 灵神：[如何科学刷题?](https://leetcode.cn/circle/discuss/RvFUtj/) 
+
 **Favorite:** 
 * 我个人比较喜欢的一些题或者觉得比较有趣的题 
