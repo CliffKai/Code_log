@@ -28,5 +28,8 @@ int numOfSubarrays(vector<int>& arr, int k, int threshold) {
 
 int main()
 {
-    
+    vector<int> arr = {2,2,2,2,5,5,5,8};
+    int k = 3, threshold = 4;
+    cout << numOfSubarrays(arr, k, threshold) << endl;
+    return 0;
 }
