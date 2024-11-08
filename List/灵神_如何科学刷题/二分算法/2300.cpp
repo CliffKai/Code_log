@@ -1,5 +1,6 @@
 #include<iostream>
 #include<vector>
+#include<algorithm>
 
 using namespace std;
 
@@ -21,7 +22,7 @@ int fun(long long int k1,long long int k2,vector<int> & potions,long long int st
 }
 
 vector<int> successfulPairs(vector<int>& spells, vector<int>& potions, long long success) {
-    ranges::sort(potions);
+    sort(potions.begin(),potions.end());
     long long int n = spells.size(),n2 = potions.size();
     vector<int> ans(n,0);
     for(long long int i = 0;i < n;++ i)
