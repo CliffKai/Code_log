@@ -1,0 +1,21 @@
+name: tmp-a-share-fetch-20260720
+on:
+  pull_request:
+    branches: [master]
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Fetch and validate
+        run: python tmp_a_share_fetch_20260720.py
+      - name: Upload results
+        uses: actions/upload-artifact@v4
+        with:
+          name: a-share-20260720
+          path: a_share_output
+          if-no-files-found: error
